@@ -1,0 +1,173 @@
+body {
+    margin: 0;
+    background-color: #EAEDFB;
+    font-family: "Nanum Gothic Coding", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4E65D9;
+    padding: 0 20px;
+    height: 100px;
+}
+
+.logo-img {
+    height: 80px;
+}
+
+.logo-link {
+    display: flex;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header-list {
+    display: flex;
+    align-items: center;
+}
+
+.header-list li {
+    position: relative;
+    color: #EAEDFB;
+    font-size: 19px;
+    letter-spacing: 3px;
+    margin-right: 40px;
+}
+
+.header-list-link::after {
+    content: "";
+    background: #EAEDFB;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    transform: scaleX(0);
+    transition: all .25s ease;
+}
+
+.header-list-link:hover::after {
+    transform: scaleX(1);
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin: 30px;
+}
+
+.search-bar input[type="text"] {
+    width: 600px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.search-bar button {
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4E65D9;
+    color: #EAEDFB;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #3f52b4;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-left: 80px;
+    letter-spacing: 7px;
+}
+
+.chat-container {
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.chat {
+    margin: 40px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 7cm; /* Фіксована ширина */
+    height: 9.2cm; /* Фіксована висота */
+}
+
+.chat img {
+    width: 5.5cm; /* Встановлюємо фіксовану ширину */
+    height: 7cm; /* Встановлюємо фіксовану висоту */
+    object-fit: cover; /* Зображення буде обрізане, щоб заповнити контейнер */
+    display: block;
+    margin-top: 12px;
+}
+
+.chat-title {
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+    flex: 1;
+}
+
+
+.chat-description-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.chat-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.join-button {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.join-button:hover {
+    background-color: #357ab8;
+}
+
+

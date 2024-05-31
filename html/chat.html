@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="../css/chat.css">
+    <style>
+        /* Стилі для контейнера повідомлень */
+        .chat-message {
+            width: auto; /* Ширина буде залежати від вмісту */
+            display: block; /* Блоковий елемент для початку з нового рядка */
+            margin: 15px 0; /* Відступи між повідомленнями */
+            padding: 10px; /* Відступ всередині повідомлення */
+            border-radius: 10px; /* Закруглені кути */
+            word-wrap: break-word; /* Перенесення слів на новий рядок */
+        }
+
+        /* Стилі для повідомлень користувача */
+        .chat-message.user {
+            background-color:  #e0e7ff; /* Колір фону для повідомлень користувача */
+            color: #4a69bd; /* Колір тексту для повідомлень користувача */
+            border-radius: 20px; /* Закруглені кути */
+            padding: 10px; /* Відступ всередині повідомлення */
+            max-width: 80%; /* Максимальна ширина повідомлення */
+            word-wrap: break-word; /* Перенесення слів на новий рядок */
+            margin: 10px 0; /* Відступи між повідомленнями */
+        }
+
+        /* Стилі для інших повідомлень */
+        .chat-message.other {
+            background-color:  #e0e7ff; /* Колір фону для інших повідомлень */
+            color: #4a69bd; /* Колір тексту для інших повідомлень */
+            border-radius: 10px; /* Закруглені кути */
+            padding: 10px; /* Відступ всередині повідомлення */
+            max-width: 80%; /* Максимальна ширина повідомлення */
+            word-wrap: break-word; /* Перенесення слів на новий рядок */
+            margin: 10px 0; /* Відступи між повідомленнями */
+        }
+
+        /* Вирівнювання повідомлень користувача праворуч */
+        .chat-message.user {
+            justify-content: flex-start; /* Вирівнювання за кінцем рядка */
+        }
+
+        /* Вирівнювання інших повідомлень ліворуч */
+        .chat-message.other {
+            justify-content: flex-start; /* Вирівнювання за початком рядка */
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <a class="back-link" href="mainpage.html">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAQBJREFUSEvt1
+                EsSgjAMANCUUWZcOgoz7vQmchL1JnoTPIkeha0iF5BPHXT8UKBNaSMb2FLympCEQU8P68mFAf5b5bVLHcfpOhtl0WI6iUxuqQWXKHfgBMCj3M
+                kDExwNf9FXnqyAwPPG565Zo2Db6PPiqhtToEqYCpXClGgrTI02wiLKAQ5OAZ27991D4uxXmktEVY2n814cvwp8SdI9A74BYEudoJizUrgMUMd
+                5yAp2xASXnRGXTeMc13DOd/7cDU3x3+9bFwg1Lt1clLhyZVLhSrix4Sz8cxRMgaPhKg7gz9yVSZdrwSV0vd23NkZLGzbJEjXHtoC2OEPG1BX+
+                xH8AgGiXH6pX4dwAAAAASUVORK5CYII=" alt="Назад">
+            </a>
+            <img id="chat-icon" class="chat-icon" src="../images/chat_icon.png" alt="Іконка чату">
+            <h2 id="chat-title" class="chat-title">Назва чату</h2>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Повідомлення будуть завантажуватися тут -->
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="message-input" placeholder="Повідомлення">
+            <button id="send-button"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IAr
+                s4c6QAAAX5JREFUSEvNlk1ugzAQhZ9DUqnLqk2r7rhJc5OGkzScJOQk4SZhV5UUdVkpQKYyJBLIY2wMKGU9+Hvz5scWuNEnbsTF/wJ//vz6rw/
+                3yZRutDKWQO88P1RAQlx6RTCVgBb4eMxXNMO+lSkhFoRwuVzEYzqg1DjNTgdA+ApkZAEceAuItTY7QgzQrvTKeEgZVPD3aQ0htmZbKQEhdBWgg
+                Nk6m1QQBX0FsHOsrbNJACgqZ2VoUwIeXNmND7bJjPBqFo0COjdXbTu9A1g5iejYBdYrsxIhXRDk9xbBjKI1uOnwV5ZvBKQTzLx3lYIoeH66i2S
+                IEzh17QEX8AX21rlcdNn2tXpwc4EicRY7bs+zVl+AcnWqO3vKcUqznKzOV28S4/xef1Eybt3JlnQCwpfHxcYyvApTwPWoyK1l8TW61CK6FeIAr
+                m+l6zz2BWqt1tZ3yocAW9+RgWzGNdjb12Okn0FXe5v/sQ+BYl4kNnfqEAFOu3oIUNtcYxxqc8bNMv4DLOrTHy3ihxcAAAAASUVORK5CYII=" alt="Відправити"></button>
+        </div>
+    </div>
+
+    <script>
+        let currentUsername = '';
+
+        // Отримання параметра chatId з URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const chatId = urlParams.get('id');
+
+        // Завантаження деталей чату
+        fetch(`../php/get_chat_details.php?id=${chatId}`)
+            .then(response => response.json())
+            .then(chat => {
+                if (chat.error) {
+                    console.error('Error loading chat details:', chat.error);
+                    return;
+                }
+                document.getElementById('chat-title').textContent = chat.title;
+                document.getElementById('chat-icon').src = chat.image_url;
+            })
+            .catch(error => console.error('Error loading chat details:', error));
+
+        // Отримання поточного username
+        fetch('../php/get_current_user.php')
+            .then(response => response.json())
+            .then(user => {
+                if (user.error) {
+                    console.error('Error getting current user:', user.error);
+                    return;
+                }
+                currentUsername = user.username;
+            })
+            .catch(error => console.error('Error getting current user:', error));
+
+        // Функція для відправлення повідомлення
+        function sendMessage() {
+            const messageInput = document.getElementById('message-input');
+            const message = messageInput.value;
+
+            if (message.trim() !== '') {
+                fetch('../php/send_message.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ chatId: chatId, username: currentUsername, message: message })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        addMessageToChat(currentUsername, message, 'user');
+                        messageInput.value = '';
+                    } else {
+                        console.error('Error sending message:', data.error);
+                    }
+                })
+                .catch(error => console.error('Error sending message:', error));
+            }
+        }
+
+        // Функція для додавання повідомлення у чат
+        function addMessageToChat(username, message, messageType) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message', messageType);
+            const messageContent = document.createElement('div');
+            messageContent.classList.add('message-content');
+            messageContent.textContent = `${username}: ${message}`;
+            messageElement.appendChild(messageContent);
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Завантаження повідомлень при завантаженні сторінки
+        function loadMessages() {
+            fetch(`../php/load_messages.php?id=${chatId}`)
+                .then(response => response.json())
+                .then(messages => {
+                    const chatMessages = document.getElementById('chat-messages');
+                    chatMessages.innerHTML = '';
+                    messages.forEach(message => {
+                        const messageType = message.username === currentUsername ? 'user' : 'other';
+                        addMessageToChat(message.username, message.message, messageType);
+                    });
+                })
+                .catch(error => console.error('Error loading messages:', error));
+        }
+
+        // Подія на кнопку відправлення повідомлення
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+
+        // Подія на клавішу Enter для відправлення повідомлення
+        document.getElementById('message-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Завантаження повідомлень при завантаженні сторінки
+        window.onload = loadMessages;
+    </script>
+</body>
+</html>

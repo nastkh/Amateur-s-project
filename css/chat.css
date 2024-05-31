@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0e7ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 900px;
+    height: 95vh;
+    background-color: #f0f4ff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    background-color: #4a69bd;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.back-link img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.chat-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    margin-left: 10px;
+    border-radius: 100%;
+}
+
+.chat-title {
+    color: white;
+    font-size: 24px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #d3e0ff;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-input-container {
+    display: flex;
+    align-items: center;
+    background-color: #4a69bd;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.chat-input-container input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.chat-input-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.chat-input-container button img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Стилі для контейнера повідомлень */
+.chat-message {
+    width: auto; /* Ширина буде залежати від вмісту */
+    display: block; /* Блоковий елемент для початку з нового рядка */
+    margin: 15px 0; /* Відступи між повідомленнями */
+    padding: 10px; /* Відступ всередині повідомлення */
+    border-radius: 10px; /* Закруглені кути */
+    word-wrap: break-word; /* Перенесення слів на новий рядок */
+}
+
+/* Стилі для повідомлень користувача */
+.chat-message.user {
+    background-color:  #e0e7ff; /* Колір фону для повідомлень користувача */
+    color: #4a69bd; /* Колір тексту для повідомлень користувача */
+    border-radius: 20px; /* Закруглені кути */
+    padding: 10px; /* Відступ всередині повідомлення */
+    max-width: 80%; /* Максимальна ширина повідомлення */
+    word-wrap: break-word; /* Перенесення слів на новий рядок */
+    margin: 10px 0; /* Відступи між повідомленнями */
+}
+
+/* Стилі для інших повідомлень */
+.chat-message.other {
+    background-color:  #e0e7ff; /* Колір фону для інших повідомлень */
+    color: #4a69bd; /* Колір тексту для інших повідомлень */
+    border-radius: 10px; /* Закруглені кути */
+    padding: 10px; /* Відступ всередині повідомлення */
+    max-width: 80%; /* Максимальна ширина повідомлення */
+    word-wrap: break-word; /* Перенесення слів на новий рядок */
+    margin: 10px 0; /* Відступи між повідомленнями */
+}
+
+/* Вирівнювання повідомлень користувача праворуч */
+.chat-message.user {
+    justify-content: flex-start; /* Вирівнювання за кінцем рядка */
+}
+
+/* Вирівнювання інших повідомлень ліворуч */
+.chat-message.other {
+    justify-content: flex-start; /* Вирівнювання за початком рядка */
+}

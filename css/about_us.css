@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    background-color: #EAEDFB;
+    font-family: "Nanum Gothic Coding", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4E65D9;
+    padding: 0 20px;
+    height: 100px;
+}
+
+.logo-img {
+    height: 80px;
+}
+
+.logo-link {
+    display: flex;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header-list {
+    display: flex;
+    align-items: center;
+}
+
+.header-list li {
+    position: relative;
+    color: #EAEDFB;
+    font-size: 19px;
+    letter-spacing: 3px;
+    margin-right: 40px;
+}
+
+.header-list-link::after {
+    content: "";
+    background: #EAEDFB;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    transform: scaleX(0);
+    transition: all .25s ease;
+}
+
+.header-list-link:hover::after {
+    transform: scaleX(1);
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-left: 80px;
+    letter-spacing: 7px;
+}
+
+h2 {
+    margin-top: 50px;
+    margin-left: 80px;
+    letter-spacing: 7px;
+}
+
+p {
+    margin-top: 50px;
+    margin-left: 80px;
+    margin-right: 80px;
+    line-height: 0.8cm;
+    padding-right: 50px;
+    font-family: Verdana, sans-serif;
+    
+}

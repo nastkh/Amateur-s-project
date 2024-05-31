@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    background-color: #EAEDFB;
+    font-family: "Nanum Gothic Coding", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4E65D9;
+    padding: 0 20px;
+    height: 100px;
+}
+
+.back-to-main {
+    display: flex;
+    height: 80px;
+    margin-top: 40px;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+
+
+.chat-description-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 40px 20px 40px 40px;
+    width: 80%;
+    text-align: left;
+}
+
+.chat-description-container img {
+    width: 7cm;
+    height: 9cm;
+    border-radius: 8px;
+    margin-right: 40px;
+    object-fit: cover;
+}
+
+.chat-description-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.chat-description-container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.join-button {
+    background-color: #4E65D9;
+    color: #fff;
+    border: none;
+    width: 4cm;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.join-button:hover {
+    background-color: #3f52b4;
+}
+
+.chat-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.chat-info p {
+    margin: 40px 0;
+}
